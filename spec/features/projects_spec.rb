@@ -1,6 +1,11 @@
 require 'rails_helper'
 
+
+# We are testing (from a user's perspective) that they can sucessfully
+# create, update and remove projects using the UI
 RSpec.feature "Projects", type: :feature do
+
+  #create a group of tests for creating a new project
   context "Create new project" do
     before(:each) do
       visit new_project_path
@@ -21,6 +26,7 @@ RSpec.feature "Projects", type: :feature do
     end
   end
 
+  #create a group of tests for updating (editing) a project
   context "Update project" do
     let(:project) { Project.create(title: "Test title", description: "Test content") }
     before(:each) do
@@ -44,6 +50,7 @@ RSpec.feature "Projects", type: :feature do
     end
   end
 
+  #create a group of tests for deleting a project
   context "Remove existing project" do
     let!(:project) { Project.create(title: "Test title", description: "Test content") }
     scenario "remove project" do
