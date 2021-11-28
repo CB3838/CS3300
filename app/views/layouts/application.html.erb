@@ -5,6 +5,17 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <% if (user_signed_in?) %>
+    Your email:  <%= current_user.email %>
+    (<%= link_to "Log Out", "/users/sign_out", method: :delete %>)
+
+    <br>
+    --------------------------------------------------
+    <% else %>
+    Not signed in. <%= link_to "Log in", "/users/sign_in", method: :get %>
+
+    <% end %>
+
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
