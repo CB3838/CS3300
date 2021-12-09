@@ -1,29 +1,39 @@
+<div class="jumbotron text-center">
 <p id="notice"><%= notice %></p>
 
+<h1 class="display-4">Welcome to Cole Bennett's Portfolio</h1>
+
+<p class="lead">Computer science major, UCCS</p>
+<br>
 <h1>Projects</h1>
+<br>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<div class = "card-columns">
 
-  <tbody>
-    <% @projects.each do |project| %>
-      <tr>
-        <td><%= project.title %></td>
-        <td><%= project.description %></td>
-        <td><%= link_to 'Show', project %></td>
-        <td><%= link_to 'Edit', edit_project_path(project) %></td>
-        <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<% @projects.each do |project| %>
+  <tr>
+
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">  <%= project.title %>  </h5>
+        <p class="card-text">  <%= project.description %>  </p>
+        <%= link_to 'View', project %>
+        <% if (user_signed_in?) %>
+        &nbsp | &nbsp
+        <%= link_to 'Edit', edit_project_path(project) %> &nbsp | &nbsp
+        <%= link_to 'Remove', project, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <%end%>
+      </div>
+    </div>
+  </tr>
+<% end %>
+
+</div>
 
 <br>
 
-<%= link_to 'New Project', new_project_path %>
+<% if (user_signed_in?) %>
+<%= link_to 'Add New Project', new_project_path %>
+<%end%>
+
+</div>
