@@ -31,6 +31,12 @@ gem 'mini_racer'
 #devise authentication solution
 gem 'devise'
 
+#bootstrap for adding style
+gem 'bootstrap', '~> 4.6.1'
+
+#Javascript Jquery
+gem 'jquery-rails'
+
 group :production do
   gem 'pg', '~> 0.21' # for Heroku deployment
   gem 'rails_12factor'
